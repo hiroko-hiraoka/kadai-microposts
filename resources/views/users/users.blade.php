@@ -2,8 +2,8 @@
     <ul class="list-unstyled">
         @foreach ($users as $user)
             <li class="media">
-                <img class="mr-2 rounded" src="{{ Gravatar::src($user->emaik, 50) }}" alt="">
-                <div class=="media-body">
+                <img class="mr-2 rounded" src="{{ Gravatar::src($user->email, 50) }}" alt="">
+                <div class="media-body">
                     <div>
                     {{ $user->name }}
                     </div>
@@ -14,5 +14,6 @@
             </li>
         @endforeach
     </ul>
-    {{ $users->link('pagination::bootstrap-4') }}
+    {{ $users->links('pagination::bootstrap-4') }}
 @endif
+
