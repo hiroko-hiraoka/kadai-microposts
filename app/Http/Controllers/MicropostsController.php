@@ -45,5 +45,21 @@ class MicropostsController extends Controller
         
         return back();
     }
+    
+    public function like()
+    {
+        $data = [];
+        if (\Auth::id() === $micropost->user_id) {
+            $user = \Auth::user();
+            $microposts = $user->like_microposts()->orderBy('created_at', 'desc')->paginate(10);
+            
+            $data = [
+                'user' => $user,
+                'micropost' => $microposts,
+             ];
+         }
+         return view('users.favorites', $data);
+    }
 }
+
 
