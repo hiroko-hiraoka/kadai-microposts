@@ -42,14 +42,7 @@
             
         </div>
         <aside="col-sm-4">
-            
-            {!! Form::open(['route' => 'signup.post']) !!}
-                <div class="form-group">
-                    {!! Form::label('name', 'アイコン入れるフォーム作りたい') !!}
-                    {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-               
-                </div>
-          
+            @include('users.card', ['user' => $user])
         </aside>
     </div>
 @endsection

@@ -79,12 +79,7 @@ class UsersController extends Controller
         
         return redirect('/');
     }
-    
-    
-    
-    
-    
-    
+
     
     
     public function followings($id)

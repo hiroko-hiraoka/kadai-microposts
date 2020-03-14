@@ -1,7 +1,7 @@
 <ul class="media-list">
     @foreach ($microposts as $micropost)
         <li class="media mb-3">
-            <img class="mr-1 rounded" src="{{ Gravatar::src($micropost->user->email, 50) }}" alt="">
+            <img class="mr-1 rounded" src="{{ Gravatar::src($micropost->user->email, 80) }}" alt="">
             <div class="media-body">
                 <div class="row">
                     <div class="col-sm-6">
@@ -18,13 +18,11 @@
                     <div class="col-sm-6 border border-success rounded" style="padding:10px;">
                         <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
                     </div>
-                @if (Auth::id() === $micropost->user_id)
-                    <div class="col-sm-1">
+                    @if (Auth::id() === $micropost->user_id)
                         {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
-                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                        {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
-                    </div>
-                @endif
+                    @endif
                 </div>
             </div>     
            

@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('microposts', 'MicropostsController');
 
     Route::post('photos/create', 'PhotosController@create')->name('photos.create');
+    Route::post('photos/create2', 'PhotosController@create2')->name('photos.create2');
 
     // 課題で追加
     Route::group(['prefix' => 'microposts/{id}'], function () {
