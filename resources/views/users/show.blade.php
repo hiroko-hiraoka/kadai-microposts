@@ -4,17 +4,16 @@
     <div class="row">
         <aside class="col-sm-4">
             @include('users.card', ['user' => $user])
+            {!! link_to_route('users.edit', '登録情報変更', ['id' => $user->id], ['class' => 'btn btn-block btn-success']) !!}
+              <form action="{{ action('PhotosController@create') }}" method="post" enctype="multipart/form-data">
+                <!-- アップロードフォームの作成 -->
+                <input type="file" name="image">
+                {{ csrf_field() }}
+                <input type="submit" value="アップロード">
+              </form>
         </aside>
         <div class="col-sm-8">
             @include('users.navtabs', ['user' => $user])
-            @if (Auth::id() == $user->id)
-                {!! Form::open(['route' => 'microposts.store']) !!}
-                    <div class="form-group">
-                        {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-                        {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
-                    </div>
-                {!! Form::close() !!}
-            @endif
             @if (count($microposts) >0)
                 @include('microposts.microposts', ['microposts' => $microposts])
             @endif

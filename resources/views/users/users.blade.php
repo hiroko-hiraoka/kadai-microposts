@@ -2,7 +2,11 @@
     <ul class="list-unstyled">
         @foreach ($users as $user)
             <li class="media">
-                <img class="mr-2 rounded" src="{{ Gravatar::src($user->email, 50) }}" alt="">
+                @if($user->icon == null )
+                    <img class="rounded img-fluid" src="{{ Gravatar::src($user->email, 50) }}" alt="">
+                @else
+                    <img class="rounded img-fluid" src="{{ $user->icon }}" width=50>
+                @endif
                 <div class="media-body">
                     <div>
                     {{ $user->name }}

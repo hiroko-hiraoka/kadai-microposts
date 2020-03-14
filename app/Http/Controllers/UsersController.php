@@ -32,6 +32,61 @@ class UsersController extends Controller
         return view('users.show', $data);
     }
     
+        public function edit($id)
+    {
+        $user = User::find($id);
+        
+        if (\Auth::id() === $user->id) {
+            return view('users.edit',[
+                'user' => $user,
+            ]);
+        }
+        return redirect('/');
+    }
+    
+
+        public function update(Request $request, $id)    // 追加
+    {
+        $this->validate($request, [
+            'name' => 'required|max:191',
+            'email' => 'required|max:191',
+            'password' => 'required|max:191',
+            'icon' => 'max:191',
+        ]);
+      
+        $user = User::find($id);
+        
+        if (\Auth::id() === $user->id) {
+            
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = $request->password;
+            $user->icon = $user->icon;
+            $user->save();
+        return redirect('/');
+        }
+        return redirect('/');
+    }
+    
+    
+    public function destroy($id)    // 追加
+    {
+        $user = \App\User::find($id);
+        
+        if (\Auth::id() === $user->id) {
+            $user->delete();
+        }
+        
+        return redirect('/');
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     public function followings($id)
     {
         $user = User::find($id);

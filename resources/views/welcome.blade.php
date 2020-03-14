@@ -2,31 +2,38 @@
 
 @section('content')
     @if (Auth::check())
+        
+        <div class="d-flex flex-row">
+            <h1>おすすめ一覧</h1>
+            <div>{{ $microposts->links('pagination::bootstrap-4') }}</div>
+        </div>
         <div class="row">
-            <aside class="col-sm-4">
-                @include('users.card', ['user' => Auth::user()])
-            </aside>
-            <div class="col-sm-8">
-                @if (Auth::id() === $user->id)
-                    {!! Form::open(['route' => 'microposts.store']) !!}
-                        <div class="form-groupe">
-                            {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-                            {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
-                        </div>
-                    {!! Form::close() !!}
-                @endif
+            <div class="col-sm-12">
                 @if (count($microposts) > 0)
                     @include('microposts.microposts', ['microposts' => $microposts])
                 @endif
             </div>
         </div>
+            {!! link_to_route('microposts.create', 'おすすめの一品　投稿ページへ行く', [], ['class' => 'btn btn-block btn-success']) !!}
+        </class>
+        <div class="row">
+            <div class="offsest-sm-3"></div>
+            <div class="col-sm-6">
+                //　検索フォーム
+            </div>
+            <div class="col-sm-3">
+               {!! link_to_route('signup.get', 'メンバー登録してもっと見る', []) !!}
+            </div>
+        </div>
     @else
         <div class="center jumbotron">
+            <h2 class="text-success font-weight-bold">おいでませ！</h2>
             <div class="text-center">
-                <h1>Welcome to the Microposts</h1>
-                {!! link_to_route('signup.get', 'sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
+                <h1>おすすめの一品　紹介します</h1>
+                    <div class="mt-4">{!! link_to_route('login', 'ロ グ イ ン', [], ['class' => 'btn btn-lg btn-success']) !!}</div>
+                    <div class="mt-4">{!! link_to_route('signup.get', 'メンバー登録', [], ['class' => 'btn btn-lg btn-success']) !!}</div>
+                    <div class="mt-4">{!! link_to_route('microposts.index', 'メンバー登録の前にちょっとのぞき見', []) !!}</div>
             </div>
         </div>
     @endif
 @endsection
-

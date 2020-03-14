@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'icon'
     ];
 
     /**
@@ -139,6 +139,11 @@ class User extends Authenticatable
         return Micropost::whereIn('user_id', $favorite_user_ids);
     }
     
+    
+    public function icons()
+    {
+        return $this->hasMany(Photo::class);
+    }
 
 }
 

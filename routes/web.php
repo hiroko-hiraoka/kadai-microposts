@@ -25,20 +25,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 // ユーザー機能
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    
-    Route::group(['prefix' => 'users/{id}'], function () {
-        Route::post('follow', 'UserFollowController@store')->name('user.follow');
-        Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
-        Route::get('followings', 'UsersController@followings')->name('users.followings');
-        Route::get('followers', 'UsersController@followers')->name('users.followers');
-    });
-    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
-});
-
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+   
+    Route::resource('users', 'UsersController');
     
     Route::group(['prefix' => 'users/{id}'], function () {
         Route::post('follow', 'UserFollowController@store')->name('user.follow');
@@ -48,13 +36,19 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
     });
     
+    Route::resource('microposts', 'MicropostsController');
+
+    Route::post('photos/create', 'PhotosController@create')->name('photos.create');
+
     // 課題で追加
     Route::group(['prefix' => 'microposts/{id}'], function () {
         Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');
+        
+        
+        
         Route::delete('unfavorite', 'FavoritesController@destroy')->name('favorites.unfavorite');
     });
-    
-    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
+   
 });
 
 

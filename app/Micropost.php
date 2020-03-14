@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Micropost extends Model
 {
-    protected $fillable = ['content', 'user_id'];
+    protected $fillable = [
+        'content', 'user_id', 'maker', 'title', 'field', 'class', 'standard_a', 'standard_b'
+    ];
     
     public function user()
     {
@@ -18,5 +20,8 @@ class Micropost extends Model
         return $this->belongsToMany(User::class, 'favorites', 'Micropost_id', 'user_id')->withTimestamps();
     }
 
-    
+    public function photo()
+    {
+        return $this->hasMany(Photo::class);
+    }
 }
