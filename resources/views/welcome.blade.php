@@ -2,9 +2,8 @@
 
 @section('content')
     @if (Auth::check())
-        
+        <h1 class="text-center text-info">おすすめ一覧</h1>        
         <div class="d-flex flex-row">
-            <h1>おすすめ一覧</h1>
             <div>{{ $microposts->links('pagination::bootstrap-4') }}</div>
         </div>
         <div class="row">

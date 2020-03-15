@@ -6,7 +6,7 @@
     </div>
     
     <div class="row">
-        <div class="col-sm-6 offset-sm-2">
+        <div class="col-sm-12">
             
             {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
@@ -32,19 +32,7 @@
                 {!! Form::submit('登　録', ['class' => 'btn btn-success btn-block']) !!}
             {!! Form::close() !!}
         </div>
-        <aside="col-sm-4">
-            
-            {!! Form::open(['route' => 'signup.post']) !!}
-                <div class="form-group">
-                    {!! Form::label('name', 'アイコン入れるフォーム作りたい') !!}
-                    {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-               
-                </div>
-                
-            
-                {!! Form::submit('アイコン登録', ['class' => 'btn btn-success btn-block']) !!}
-            {!! Form::close() !!}
-        </aside>
+    
     </div>
 @endsection
 

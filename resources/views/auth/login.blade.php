@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="text-center text-info">
-        <h1>ログイン</h1>
-    </div>
+
+     <h1 class="text-center text-info">ログイン</h1>
+
     
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
