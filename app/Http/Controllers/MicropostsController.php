@@ -13,7 +13,7 @@ class MicropostsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $microposts = Micropost::orderBy('created_at', 'desc')->paginate(8);
+            $microposts = Micropost::orderBy('created_at', 'desc')->paginate(5);
             
             
             $data = [
