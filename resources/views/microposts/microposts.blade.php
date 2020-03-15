@@ -1,7 +1,7 @@
 <ul class="media-list">
     @foreach ($microposts as $micropost)
         <li class="media mb-3">
-            <img class="mr-1 rounded" src="{{ Gravatar::src($micropost->user->email, 80) }}" alt="">
+            <img class="mr-1 rounded" src="{{ $micropost->image_path }}" width=50 alt="写真投稿お待ちしてます">
             <div class="media-body">
                 <div class="row">
                     <div class="col-sm-6">

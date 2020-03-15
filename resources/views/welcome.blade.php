@@ -15,16 +15,13 @@
             </div>
         </div>
             {!! link_to_route('microposts.create', 'おすすめの一品　投稿ページへ行く', [], ['class' => 'btn btn-block btn-success']) !!}
-        </class>
         <div class="row">
             <div class="offsest-sm-3"></div>
             <div class="col-sm-6">
-                //　検索フォーム
             </div>
             <div class="col-sm-3">
                {!! link_to_route('signup.get', 'メンバー登録してもっと見る', []) !!}
-            </div>
-        </div>
+     
     @else
         <div class="center jumbotron">
             <h2 class="text-success font-weight-bold">おいでませ！</h2>

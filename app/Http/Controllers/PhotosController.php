@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Photo; // 追加
 use Storage;  // 追加
 use App\User;
+use App\Micropost;
 
 class PhotosController extends Controller
 {
@@ -36,9 +37,11 @@ class PhotosController extends Controller
   }
   
   
-   public function create2(Request $request)
+   public function create2(Request $request, $id)
   {
+        
       $user = \Auth::user();
+      $micropost = Micropost::find($id);
       
       $form = $request->all();
 
@@ -49,12 +52,15 @@ class PhotosController extends Controller
       $path = Storage::disk('s3')->putFileAs('microposts_photo2', $image, \Auth::id().'.jpg','public');
       
       // アップロードした画像のフルパスを取得
-      $photo->image = Storage::disk('s3')->url($path);
 
-      $photo->save();
+      $micropost->image_path = Storage::disk('s3')->url($path);
+      
+      $micropost->save();
 
       return redirect('/');
   }
   
+  
+
   
 }
