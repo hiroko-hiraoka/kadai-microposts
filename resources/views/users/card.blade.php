@@ -4,7 +4,7 @@
     </div>
     <div class="card-body text-center">
         @if($user->icon == null )
-            <img class="rounded img-fluid" src="{{ Gravatar::src($user->email, 500) }}" alt="">
+            <img class="rounded img-fluid" src="{{ Gravatar::src($user->email, 200) }}" alt="">
         @else
             <img class="rounded img-fluid" src="{{ $user->icon }}" width=200>
         @endif
