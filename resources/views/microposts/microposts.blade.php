@@ -1,7 +1,7 @@
 <ul class="media-list">
     @foreach ($microposts as $micropost)
         <li class="media mb-3">
-            <img class="mr-1 rounded" src="{{ $micropost->image_path }}" width=200 alt="写真投稿お待ちしてます">
+            <img class="mr-1 rounded" src="{{ $micropost->image_path }}" width=200 alt="写真投稿は詳細画面から">
             <div class="media-body">
                 <div class="row">
                     <div class="col-sm-6">

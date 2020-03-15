@@ -40,7 +40,8 @@
             </div>
         </div>
         <aside class="col-sm-4">
-            //写真投稿
+            <div class="bg-info">写真投稿は</div>
+            <div class="bg-info">詳細画面から</div>
         </aside>
     </div>
 @endsection
